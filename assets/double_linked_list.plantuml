@@ -1,0 +1,94 @@
+@startuml
+
+start
+
+: Create a Structure with previous, next node
+              and an array to store names;
+: Display Menu with various choices;
+: Declare variable choice;
+: Read choice/
+
+while (when the choice is not to exit) is (yes)
+
+: Switch choice;
+
+fork
+-> case 1 (Insertion);
+:temp -> next = ptr ->next
+temp -> prev = ptr
+ptr -> next = temp
+ptr -> next -> =temp;
+
+fork again
+-> case 2 (Deletion);
+:pos = temp -> next
+temp -> next = pos -> next
+pos -> next -> prev = temp;
+
+fork again
+-> case 3 (Display);
+:ptr = head
+when ptr -> next != NULL
+then move ptr = ptr-> next
+print each element while traverse;
+
+fork again
+-> case 4 (Search);
+:compare str1 and str2
+when str 1 & str2 = 0
+print previous and next node;
+
+end fork
+
+: read choice/
+
+endwhile (no)
+
+stop
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/': Create a Structure with previous, next node
+            and an array to store names;
+: Display Menu with various choices;
+: Declare variable choice;
+: Read choice/
+
+while (when the choice is not to exit) is (yes)
+
+: Switch choice;
+
+fork
+
+-> case 1 (Insertion);
+: Create a *temp node and allocated memory address;
+if(List is Empty) then (yes)
+: Make head = temp
+ and next memory of temp -> NULL;
+else (no)
+: compare array which consists of list and array
+                which contains insertion name;
+:When array comparison returns 0,
+temp -> next = ptr -> next
+previous memory of temp = ptr
+next memory of ptr = temp
+ptr -> next -> prev = temp;'/

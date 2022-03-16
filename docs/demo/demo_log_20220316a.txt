@@ -1,0 +1,99 @@
+PS E:\Training\GitHub\Double-Linked-List\issue1\Double-Linked-List\src> cd "e:\Training\GitHub\Double-Linked-List\issue1\Double-Linked-List\src\" ; if
+($?) { gcc doubleLinkedList.c -o doubleLinkedList } ; if ($?) { .\doubleLinkedList }
+
+-----------------------------------------------------
+This is doubleLinkedList.exe v1.0.0
+-----------------------------------------------------
+
+======== MENU ========
+1. Add Entry:
+2. Delete Entry:
+3. Display Entries:
+4. Search Entries:
+5. Exit:
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: ajay
+ajay
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: jana
+ajay -> jana
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: lavanya
+ajay -> jana -> lavanya
+
+Enter the Choice:
+4
+You selected Search a Name...
+Enter a Name you wish to Search: ajay
+There is no previous name in this List for your search!!!
+The next name is: jana
+ajay -> jana -> lavanya
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: bas
+ajay -> bas -> jana -> lavanya
+
+Enter the Choice:
+4
+You selected Search a Name...
+Enter a Name you wish to Search: ajay
+There is no previous name in this List for your search!!!
+The next name is: bas
+ajay -> bas -> jana -> lavanya
+
+Enter the Choice:
+4
+You selected Search a Name...
+Enter a Name you wish to Search: lavanya
+The previous name is: jana
+There is no next name in this list for your search!!!
+ajay -> bas -> jana -> lavanya
+
+Enter the Choice:
+4
+You selected Search a Name...
+Enter a Name you wish to Search: jana
+The previous name is: bas
+The next name is: lavanya
+ajay -> bas -> jana -> lavanya
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: vishal
+ajay -> bas -> jana -> lavanya -> vishal
+
+Enter the Choice:
+2
+You selected Deletion of Name...
+Enter a Name you wish to delete: bas
+ajay -> jana -> lavanya -> vishal
+
+Enter the Choice:
+2
+You selected Deletion of Name...
+Enter a Name you wish to delete: vishal
+ajay -> jana -> lavanya
+
+Enter the Choice:
+2
+You selected Deletion of Name...
+Enter a Name you wish to delete: ajay
+jana -> lavanya
+
+Enter the Choice:
+3
+jana -> lavanya
+
+Enter the Choice:

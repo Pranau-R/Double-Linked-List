@@ -1,0 +1,61 @@
+PS E:\Training\GitHub\Double-Linked-List\issue1\Double-Linked-List\src> cd "e:\Training\GitHub\Double-Linked-List\issue1\Double-Linked-List\src\" ; if ($?) { gcc doubleLinkedList.c -o doubleLinkedList } ; if ($?) { .\doubleLinkedList }
+
+-----------------------------------------------------
+This is doubleLinkedList.exe v1.0.0
+-----------------------------------------------------
+
+======== MENU ========
+1. Add Entry:
+2. Delete Entry:
+3. Display Entries:
+4. Search Entries:
+5. Exit:
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: ajay
+I'm head
+setting head
+ajay
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: jana
+else condition
+Insertion starts
+Insertion Completed
+ajay -> jana
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: vishal
+else condition
+while loop
+traverse--->
+Insertion starts
+Insertion Completed
+ajay -> jana -> vishal
+
+Enter the Choice:
+1
+You selected Insertion of Name...
+Enter a Name you wish to Add: harish
+else condition
+Insertion starts
+Insertion Completed
+ajay -> harish -> jana -> vishal
+
+Enter the Choice:
+2
+You selected Deletion of Name...
+Enter a Name you wish to delete: vishal
+before traverse
+after traverse --->
+before traverse
+after traverse --->
+before traverse
+after traverse --->
+before removing ptr

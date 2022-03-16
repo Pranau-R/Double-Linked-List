@@ -49,12 +49,13 @@ Function:
     To add new names on the list.
 
 Definition:
-    void add (
-        No arguments
-        );
+    void add ();
+    
+Parameter and Arguments:
+    It has no data and no arguments
 
 Description:
-    It is a void function which returns no value. The character type argument is used here to store "strings" from user in a list.
+    It is a void function which returns no value.
 
 Returns:
     Functions returning type void: Nothing.
@@ -73,35 +74,179 @@ void add()
     struct node *temp;
 
     temp = (struct node *) malloc (sizeof (struct node));
+
     strcpy(temp -> name, insert_name);
 
     if (head == NULL)
         {
-        printf("haha\n");
         head = temp;
-        temp -> next = NULL;
-        printf("hehe\n");
+        }
+    else if (strcmp (head -> name, temp -> name) >= 0)
+        {
+        temp -> next = head;
+        temp -> next -> prev = temp;
+        head = temp;
         }
     else
         {
-        printf("lol\n");
         ptr = head;
-        while (ptr -> next != NULL && strcmp(ptr -> name, insert_name) < 0)
+        while (ptr -> next != NULL && strcmp(ptr -> next -> name, insert_name) < 0)
             {
-            printf("hi\n");
             ptr = ptr -> next;
-            printf("hello\n");
             }
-        printf("OUT\n");
+
         temp -> next = ptr -> next;
         temp -> prev = ptr;
         ptr -> next = temp;
         ptr -> next -> prev =temp;
-        printf("Thats good\n");
-        //ptr -> next = temp;
-        //ptr -> next -> prev =temp;
+        }
+    }
+
+/*
+
+Name: delete()
+
+Function:
+    To delete a given name from the list.
+
+Definition:
+    void delete();
+
+parameter and arguments:
+    It has no data and no arguments.
+
+Description:
+    It is a void function which returns no value.
+
+Returns:
+    Functions returning type void: Nothing.
+
+*/
+
+void delete()
+    {
+    char delete_name[20];
+
+    printf("You selected Deletion of Name... \n");
+
+    printf("Enter a Name you wish to delete: ");
+    scanf("%s", delete_name);
+
+    struct node *pos;
+
+    ptr = head;
+    pos = ptr;
+
+    while (strcmp (delete_name, ptr -> name) != 0)
+        {
+        if(ptr -> next == NULL)
+            {
+            printf("The name you entered is not present in the List!!\n");
+            break;
+            }
+        else
+            {
+            pos = ptr;
+            ptr = ptr -> next;
             }
         }
+
+    if (ptr == head)
+        {
+        head = ptr -> next;
+        }
+    else if (ptr -> next == NULL)
+        {
+        ptr = pos -> next;
+        pos -> next = NULL;
+        }
+    else
+        {
+        ptr = pos -> next;
+        pos -> next = ptr -> next;
+        ptr -> next -> prev = pos;
+        }
+
+    free (ptr);
+    }
+
+/*
+
+Name: search()
+
+Function:
+    To search a name and to display the previous name and next name of searched name.
+
+Definition:
+    void search ();
+
+Parameter and Arguments:
+    It has no data and no arguments.
+
+Description:
+    This function has no return value and no arguments. .
+
+Returns:
+    Functions returning type void: Nothing.
+
+*/
+void search ()
+    {
+    char search_name[20];
+
+    printf("You selected Search a Name... \n");
+
+    printf("Enter a Name you wish to Search: ");
+    scanf("%s", search_name);
+
+    struct node *temp;
+
+    temp = (struct node *) malloc (sizeof (struct node));
+
+    strcpy(temp -> name, search_name);
+
+    struct node *pos;
+
+    ptr = head;
+    pos = ptr;
+
+    while (strcmp (search_name, ptr -> name) != 0)
+        {
+        if(ptr -> next == NULL)
+            {
+            printf("The name you entered is not present in the List!!\n");
+            break;
+            }
+        else
+            {
+            pos = ptr;
+            ptr = ptr -> next;
+            }
+        }
+
+    if (ptr == head)
+        {
+        ptr = pos -> next;
+        printf("There is no previous name in this List for your search!!! \n");
+
+        printf("The next name is: %s \n", pos -> next -> name);
+        }
+    else if (ptr -> next == NULL)
+        {
+        ptr = pos -> next; 
+        printf("The previous name is: %s \n", pos -> name);
+
+        printf("There is no next name in this list for your search!!! \n");
+        }
+    else
+        {
+        ptr = pos -> next;
+        printf("The previous name is: %s \n", pos -> name);
+
+        printf("The next name is: %s \n", ptr -> next -> name);
+        }
+    }
+    
 
 /*
 
@@ -111,9 +256,10 @@ Function:
     To display all the entries in a List.
 
 Definition:
-void display (
-        No Arguments
-        );
+    void display ();
+
+parameter and arguments:
+    It has no data and no arguments.
 
 Description:
     This function has no return value and no arguments. It is used to display the list whenever the function is called.
@@ -147,8 +293,9 @@ void display()
 void main()
     {
     void add();
-    //void delete();
+    void delete();
     void display();
+    void search();
 
     int ch;
 
@@ -161,7 +308,8 @@ void main()
     printf("1. Add Entry: \n");
     printf("2. Delete Entry: \n");
     printf("3. Display Entries: \n");
-    printf("4. exit \n");
+    printf("4. Search Entries: \n");
+    printf("5. Exit: \n");
     printf("\n");
 
     while(1)
@@ -177,8 +325,40 @@ void main()
                 display();
                 break;
                 }
-
             case 2:
+                {
+                if (head == NULL)
+                    {
+                    printf("List is Empty, Deletion is not Possible!!\n");
+                    break;
+                    }
+                else
+                    {
+                    delete();
+                    display();
+                    break;
+                    }
+                }
+            case 3:
+                {
+                display();
+                break;
+                }
+            case 4:
+                {
+                if (head == NULL)
+                    {
+                    printf("List is Empty, Search is not Possible!!\n");
+                    break;
+                    }
+                else
+                    {
+                    search();
+                    display();
+                    break;
+                    }
+                }
+            case 5:
                 exit(0);
 
             default:
